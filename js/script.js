@@ -1,3 +1,4 @@
+$(function() {
 /*----- constants -----*/
 
 const PLAYERS = {
@@ -44,12 +45,12 @@ function init() {
 }
 
 function getWinner() {
-    for(let i = 0; i < COMBOS.length; i++) {
-        if(Math.abs(gameboard[COMBOS[i][0]] + 
-                    gameboard[COMBOS[i][1]] + 
-                    gameboard[COMBOS[i][2]]) === 3) return gameboard[COMBOS[i][0]]
+    for (let i = 0; i < COMBOS.length; i++) {
+        if (Math.abs(gameboard[COMBOS[i][0]] +
+                gameboard[COMBOS[i][1]] +
+                gameboard[COMBOS[i][2]]) === 3) return gameboard[COMBOS[i][0]]
     }
-    if(gameboard.includes(null)) return false;
+    if (gameboard.includes(null)) return false;
     return 'T';
 }
 
@@ -67,12 +68,13 @@ function render() {
         $squareEls.eq(index).text(PLAYERS[value])
     })
 
-    if(!winner) {
+    if (!winner) {
         $messageEl.text(`${PLAYERS[turn]}'s Turn`)
-    } else if ( winner === 'T') {
+    } else if (winner === 'T') {
         $messageEl.text('Tie Game')
     } else {
         $messageEl.text(`${PLAYERS[winner]} Wins!`)
     }
 }
 
+})
